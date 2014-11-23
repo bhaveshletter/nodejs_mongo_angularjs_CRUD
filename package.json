@@ -1,0 +1,23 @@
+{
+  "name": "nodejs_mongo_angularjs_CRUD",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~4.10.2",
+    "mongoose": "~3.8.19",
+    "request": "~2.48.0",
+    "pm": "~2.2.5",
+    "router": "~1.0.0-beta.2",
+    "server": "0.0.3",
+    "config": "~1.8.1",
+    "http-server": "~0.7.3",
+    "multer": "~0.1.6",
+    "body-parser": "~1.9.3"
+  }
+}

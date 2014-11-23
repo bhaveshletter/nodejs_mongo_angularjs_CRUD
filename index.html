@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="nodeAngular">
+<head>
+
+	<title>
+		NodeJS(ExpressJS), AngularJS & MongoDB(Mongoose ODM)
+	</title>
+
+	<link rel="stylesheet" type="text/css" href="/css/bootstrapV3.0.0.css">
+
+	<script src="/angular/lib/angular.js"></script>
+	<script src="/angular/lib/angular-route.js"></script>
+	<script src="/angular/lib/angular-resource.js"></script>
+	<script src="/angular/lib/angular-mocks.js"></script>
+
+	<script src="./angular_routes.js"></script>
+	<script src="/angular/controllers/HomeCtrl.js"></script>
+	<script src="/angular/controllers/RestaurantCreateCtrl.js"></script>
+	<script src="/angular/controllers/RestaurantEditCtrl.js"></script>
+	<script src="/angular/controllers/RestaurantIndexCtrl.js"></script>
+	<script src="/angular/controllers/RestaurantShowCtrl.js"></script>
+
+</head>
+<body>
+
+	<div class="container">
+		<div ng-view> </div>
+		<br />
+		<a href="/" class="btn btn-primary" role="button"> 
+			Home
+		</a>
+	</div>
+
+</body>
+</html>
