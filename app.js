@@ -5,9 +5,7 @@ mongoose = require('mongoose'),
 url = require('url'),
 request = require('request'),
 bodyParser = require('body-parser'),
-multer = require('multer'),
-server = require('server'),
-route = require('router');
+multer = require('multer');
 
 var app = express(),
 port = 3000;
