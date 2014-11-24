@@ -8,11 +8,11 @@ Install MongoDB, NodeJS
 
 	npm install
 
-3) Start nodejs
+3) Start nodejs for API server
 
  node app.js
 
-4) Start Angular App, Below command
+4) Start Angular App for UI server, Below command
 
 	node node_modules/http-server/bin/http-server
 
