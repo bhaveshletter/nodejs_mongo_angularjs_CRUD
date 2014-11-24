@@ -32,14 +32,13 @@ var Restaurant = mongoose.model('Restaurant');
 
 // START Configuration
 
-/*app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded*/
-/*app.use(multer); // for parsing multipart/form-data*/
 
 // END
 
 app.use(cors())
+
 .use(bodyParser.json())
+
 .use(function(req, res, next) {
 	bodyParser.urlencoded({ extended: true }); // for parsing application/x-www-form-urlencoded
 	/*multer; // for parsing multipart/form-data*/
