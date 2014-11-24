@@ -32,23 +32,25 @@ var Restaurant = mongoose.model('Restaurant');
 
 // START Configuration
 
-
-// END
 app.use(cors())
 
-.use(bodyParser.json())
+.use(bodyParser.json())		// For parsing request body
 
-.use(function(req, res, next) {
-	bodyParser.urlencoded({ extended: true }); // for parsing application/x-www-form-urlencoded
-	/*multer; // for parsing multipart/form-data*/
+.use(bodyParser.urlencoded({ extended: true }))  // For parsing application/x-www-form-urlencoded
+
+//.use(multer)	 // For parsing multipart/form-data
+
+.use(function(req, res, next) {	// Execute every request call	
 	next();
 })
 
-.get('/', function (req, res) {
-	res.send({status: 'APIs is up!'});
+// END
+
+app.get('/', function (req, res) {
+	res.sendStatus(200);
 })
 
-.get('/restaurants', function (req, res) {
+.get('/restaurants', function (req, res) {	// Read operation, with full list of records
 
 	Restaurant.find(function (err, restaurantsList) {
 		if (err) return handleError(err);
@@ -57,7 +59,7 @@ app.use(cors())
 
 })
 
-.get('/restaurants/:id', function (req, res) {
+.get('/restaurants/:id', function (req, res) {	// Read operaion, with single record
 	var id = req.params.id;
 
 	Restaurant.findById(id, function (err, restaurant) {
@@ -67,7 +69,7 @@ app.use(cors())
 
 })
 
-.post('/restaurants', function (req, res) {
+.post('/restaurants', function (req, res) {		// Create operation
 	var name = req.body.name;
 
 	Restaurant.create({ name: name }, function (err, createdRestaurant) {
@@ -77,7 +79,7 @@ app.use(cors())
 
 })
 
-.put('/restaurants/:id', function (req, res) {
+.put('/restaurants/:id', function (req, res) {	// Update operation
 	var id = req.params.id,
 		toBeUpdatedName = req.body.name;
 
@@ -88,7 +90,7 @@ app.use(cors())
 
 })
 
-.delete('/restaurants/:id', function (req, res) {
+.delete('/restaurants/:id', function (req, res) {		// Delete operation
 	var id = req.params.id;
 
 	Restaurant.findByIdAndRemove(id, function (err, deletedRestaurant) {
