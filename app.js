@@ -5,7 +5,8 @@ mongoose = require('mongoose'),
 url = require('url'),
 request = require('request'),
 bodyParser = require('body-parser'),
-multer = require('multer');
+multer = require('multer'),
+cors = require('cors');
 
 var app = express(),
 port = 3000;
@@ -31,33 +32,34 @@ var Restaurant = mongoose.model('Restaurant');
 
 // START Configuration
 
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+/*app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded*/
 /*app.use(multer); // for parsing multipart/form-data*/
 
 // END
 
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+app.use(cors())
+.use(bodyParser.json())
+.use(function(req, res, next) {
+	bodyParser.urlencoded({ extended: true }); // for parsing application/x-www-form-urlencoded
+	/*multer; // for parsing multipart/form-data*/
 	next();
-});
+})
 
-
-app.get('/', function (req, res, next) {
+.get('/', function (req, res, next) {
 	res.send({status: 'APIs is up!'});
-});
+})
 
-app.get('/restaurants', function (req, res, next) {
+.get('/restaurants', function (req, res, next) {
 
-	Restaurant.find(function (err, restaurants) {
+	Restaurant.find(function (err, restaurantsList) {
 		if (err) return handleError(err);
-		res.send(restaurants);
+		res.send(restaurantsList);
 	})
 
-});
+})
 
-app.get('/restaurants/:id', function (req, res, next) {
+.get('/restaurants/:id', function (req, res, next) {
 	var id = req.params.id;
 
 	Restaurant.findById(id, function (err, restaurant) {
@@ -65,36 +67,43 @@ app.get('/restaurants/:id', function (req, res, next) {
 		res.send(restaurant)
 	})
 
-});
+})
 
-app.post('/restaurants', function (req, res, next) {
+.post('/restaurants', function (req, res, next) {
 	var name = req.body.name;
 
-	Restaurant.create({ name: name }, function (err, restaurant) {
+	Restaurant.create({ name: name }, function (err, createdRestaurant) {
 		if (err) return handleError(err);
-		res.send(restaurant);
+		res.send(createdRestaurant);
 	})
 
-});
+})
 
-app.put('/restaurants/:id', function (req, res, next) {
+.put('/restaurants/:id', function (req, res, next) {
 	var id = req.params.id,
-		name = req.body.name;
-	
-	Restaurant.findByIdAndUpdate(id, {name: name}, function(err, restaurant){
-		if (err) return handleError(err);
-		res.send(restaurant);
-	})
-});
+		toBeUpdatedName = req.body.name;
 
-app.delete('/restaurants/:id', function (req, res, next) {
+	Restaurant.findByIdAndUpdate(id, {$set: {name: toBeUpdatedName}}, function(err, updatedRestaurant){
+		if (err) return handleError(err);
+		res.send(updatedRestaurant);
+	});
+
+})
+
+.delete('/restaurants/:id', function (req, res, next) {
 	var id = req.params.id;
 
-	Restaurant.findByIdAndRemove(id, function (err, status) {		
+	Restaurant.findByIdAndRemove(id, function (err, deletedRestaurant) {
 		if (err) return handleError(err);
-		res.send(200)
+		res.sendStatus(200);
 	})
 });
+
+/* Custome fucntion */
+var handleError = function(err){
+	console.log('------------- ERROR ---------------');
+	console.log(err);
+}
 
 /* Server configuration */
 var server = app.listen(port, function () {

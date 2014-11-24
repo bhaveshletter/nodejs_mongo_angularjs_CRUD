@@ -1,15 +1,16 @@
-restaurants.controller('RestaurantIndexCtrl', ['$scope', '$http', '$location', function(scope, http, location){
-	
-	scope.restaurants = []
+restaurants.controller('RestaurantIndexCtrl', ['$scope', '$http', '$location', 'apiUrl', function(scope, http, location, apiUrl){
+	var apiUrl = apiUrl.url;
+
+	scope.restaurants = [];
 
 	scope.delete_record = function(id){
-		http.delete('http://0.0.0.0:3000/restaurants/' + id).success(function(){
+		http.delete(apiUrl + id).success(function(){
 			getAll()
 		})
 	}
 
 	var getAll = function(){
-		http.get('http://0.0.0.0:3000/restaurants').success(function(data){
+		http.get(apiUrl).success(function(data){
 			scope.restaurants = data
 		})
 	}

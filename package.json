@@ -16,6 +16,7 @@
     "config": "~1.8.1",
     "http-server": "~0.7.3",
     "multer": "~0.1.6",
-    "body-parser": "~1.9.3"
+    "body-parser": "~1.9.3",
+    "cors": "~2.5.2"
   }
 }

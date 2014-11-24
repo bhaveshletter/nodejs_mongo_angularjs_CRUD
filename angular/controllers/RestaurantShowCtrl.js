@@ -1,7 +1,8 @@
-restaurants.controller('RestaurantShowCtrl', ['$scope', '$http', '$routeParams', function(scope, http, routeParams){
-	
+restaurants.controller('RestaurantShowCtrl', ['$scope', '$http', '$routeParams', 'apiUrl', function(scope, http, routeParams, apiUrl){
+	var apiUrl = apiUrl.url;
+
 	scope.restaurant = []
-	http.get('http://0.0.0.0:3000/restaurants/' + routeParams.id).success(function(data){
+	http.get(apiUrl + routeParams.id).success(function(data){
 		scope.restaurant = data
 	})
 
