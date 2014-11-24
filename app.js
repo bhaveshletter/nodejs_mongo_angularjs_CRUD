@@ -34,10 +34,6 @@ var Restaurant = mongoose.model('Restaurant');
 
 
 // END
-var abc = function(){
-	console.log('-----------------------');
-}
-
 app.use(cors())
 
 .use(bodyParser.json())
