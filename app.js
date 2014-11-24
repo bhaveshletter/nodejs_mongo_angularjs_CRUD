@@ -34,6 +34,9 @@ var Restaurant = mongoose.model('Restaurant');
 
 
 // END
+var abc = function(){
+	console.log('-----------------------');
+}
 
 app.use(cors())
 
@@ -45,7 +48,7 @@ app.use(cors())
 	next();
 })
 
-.get('/', function (req, res, next) {
+.get('/', function (req, res) {
 	res.send({status: 'APIs is up!'});
 })
 
