@@ -49,7 +49,7 @@ app.use(cors())
 	res.send({status: 'APIs is up!'});
 })
 
-.get('/restaurants', function (req, res, next) {
+.get('/restaurants', function (req, res) {
 
 	Restaurant.find(function (err, restaurantsList) {
 		if (err) return handleError(err);
@@ -58,7 +58,7 @@ app.use(cors())
 
 })
 
-.get('/restaurants/:id', function (req, res, next) {
+.get('/restaurants/:id', function (req, res) {
 	var id = req.params.id;
 
 	Restaurant.findById(id, function (err, restaurant) {
@@ -68,7 +68,7 @@ app.use(cors())
 
 })
 
-.post('/restaurants', function (req, res, next) {
+.post('/restaurants', function (req, res) {
 	var name = req.body.name;
 
 	Restaurant.create({ name: name }, function (err, createdRestaurant) {
@@ -78,7 +78,7 @@ app.use(cors())
 
 })
 
-.put('/restaurants/:id', function (req, res, next) {
+.put('/restaurants/:id', function (req, res) {
 	var id = req.params.id,
 		toBeUpdatedName = req.body.name;
 
@@ -89,7 +89,7 @@ app.use(cors())
 
 })
 
-.delete('/restaurants/:id', function (req, res, next) {
+.delete('/restaurants/:id', function (req, res) {
 	var id = req.params.id;
 
 	Restaurant.findByIdAndRemove(id, function (err, deletedRestaurant) {
