@@ -12,10 +12,6 @@ var app = express(),
 port = 3000;
 
 // START Connect & Config mongodb
-var Schema = mongoose.Schema,
-restaurantSchema = new Schema({
-	name : String
-});
 
 var connect = function () {
 	var options = { server: { socketOptions: { keepAlive: 1 } } };
@@ -24,6 +20,11 @@ var connect = function () {
 connect();
 mongoose.connection.on('error', console.log);
 mongoose.connection.on('disconnected', connect);
+
+Schema = mongoose.Schema,
+restaurantSchema = new Schema({
+	name : String
+});
 
 mongoose.model('Restaurant', restaurantSchema);
 var Restaurant = mongoose.model('Restaurant');
@@ -81,7 +82,7 @@ app.get('/', function (req, res) {
 
 .put('/restaurants/:id', function (req, res) {	// Update operation
 	var id = req.params.id,
-		toBeUpdatedName = req.body.name;
+	toBeUpdatedName = req.body.name;
 
 	Restaurant.findByIdAndUpdate(id, {$set: {name: toBeUpdatedName}}, function(err, updatedRestaurant){
 		if (err) return handleError(err);
