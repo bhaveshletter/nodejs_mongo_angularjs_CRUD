@@ -6,6 +6,8 @@ NodeJS v0.10.25
 
 Angular v1.2.13
 
+Bootstrap v3.1.1
+
 Ubuntu 14.04LT
 
 Other dependencies are in package.json
