@@ -1,9 +1,5 @@
 var express = require( 'express' ),
-http = require( 'http' ),
-path = require( 'path' ),
 mongoose = require('mongoose'),
-url = require('url'),
-request = require('request'),
 bodyParser = require('body-parser'),
 multer = require('multer'),
 cors = require('cors');

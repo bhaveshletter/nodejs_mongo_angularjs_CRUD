@@ -11,9 +11,7 @@
   "dependencies": {
     "express": "~4.10.2",
     "mongoose": "~3.8.19",
-    "request": "~2.48.0",
     "pm": "~2.2.5",
-    "config": "~1.8.1",
     "http-server": "~0.7.3",
     "multer": "~0.1.6",
     "body-parser": "~1.9.3",
