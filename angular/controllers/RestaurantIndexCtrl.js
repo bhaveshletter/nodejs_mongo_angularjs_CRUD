@@ -1,16 +1,14 @@
-restaurants.controller('RestaurantIndexCtrl', ['$scope', '$http', '$location', 'apiUrl', function(scope, http, location, apiUrl){
-	var apiUrl = apiUrl.url
-
+restaurants.controller('RestaurantIndexCtrl', ['$scope', '$location', 'restaurantFactory', function(scope, location, restaurantFactory){
 	scope.restaurants = []
 
 	scope.delete_record = function(id){
-		http.delete(apiUrl + id).success(function(){
+		restaurantFactory.delete(id).then(function(){
 			getAll()
 		})
 	}
 
 	var getAll = function(){
-		http.get(apiUrl).success(function(data){
+		restaurantFactory.list().then(function(data){
 			scope.restaurants = data
 		})
 	}

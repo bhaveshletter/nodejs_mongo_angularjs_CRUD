@@ -1,9 +1,8 @@
-restaurants.controller('RestaurantCreateCtrl', ['$scope', '$http', '$location', 'apiUrl', function(scope, http, location, apiUrl){
-	var apiUrl = apiUrl.url
+restaurants.controller('RestaurantCreateCtrl', ['$scope', '$location', 'restaurantFactory', function(scope, location, restaurantFactory){
 
 	scope.submit = function(){
 		if(scope.name){
-			http.post(apiUrl, {name: scope.name}).success(function(data){
+			restaurantFactory.create({name: scope.name}).then(function(data){
 				location.path('/restaurants/' + data._id)
 			})
 		}else{

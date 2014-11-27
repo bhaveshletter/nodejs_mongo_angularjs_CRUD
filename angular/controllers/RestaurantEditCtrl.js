@@ -1,14 +1,14 @@
-restaurants.controller('RestaurantEditCtrl', ['$scope', '$http', '$routeParams', '$location', 'apiUrl', function(scope, http, routeParams, location, apiUrl){
-	var apiUrl = apiUrl.url;
+restaurants.controller('RestaurantEditCtrl', ['$scope', '$routeParams', '$location', 'restaurantFactory', function(scope, routeParams, location, restaurantFactory){
 
-	http.get(apiUrl + routeParams.id).success(function(data){
+
+	restaurantFactory.show(routeParams.id).then(function(data){
 		scope.name = data.name
 	})
 
 	scope.submit = function(){
 		if(scope.name){
-			http.put(apiUrl + routeParams.id, {name: scope.name}).success(function(updateRestaurant){
-				location.path('/restaurants/' + updateRestaurant._id)
+			restaurantFactory.update(routeParams.id, {name: scope.name}).then(function(updatedRestaurant){
+				location.path('/restaurants/' + updatedRestaurant._id)
 			})
 		}else{
 			scope.errorStatus = true
