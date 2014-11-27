@@ -8,10 +8,10 @@ restaurants.controller('RestaurantEditCtrl', ['$scope', '$http', '$routeParams',
 	scope.submit = function(){
 		if(scope.name){
 			http.put(apiUrl + routeParams.id, {name: scope.name}).success(function(updateRestaurant){
-				location.path('/restaurants/' + updateRestaurant._id);
+				location.path('/restaurants/' + updateRestaurant._id)
 			})
 		}else{
-			scope.errorStatus = true;
+			scope.errorStatus = true
 		}
 	}
 

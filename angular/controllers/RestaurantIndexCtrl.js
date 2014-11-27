@@ -1,7 +1,7 @@
 restaurants.controller('RestaurantIndexCtrl', ['$scope', '$http', '$location', 'apiUrl', function(scope, http, location, apiUrl){
-	var apiUrl = apiUrl.url;
+	var apiUrl = apiUrl.url
 
-	scope.restaurants = [];
+	scope.restaurants = []
 
 	scope.delete_record = function(id){
 		http.delete(apiUrl + id).success(function(){
