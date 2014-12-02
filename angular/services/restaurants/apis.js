@@ -10,7 +10,7 @@ restaurants.factory('restaurantFactory',['$http', '$q', 'apiUrl', function (http
 			dfd.resolve(result)
 		})
 		.error(function (data, status, headers, config) {
-			dfd.resolve(data)
+			dfd.reject(data)
 		})
 
 		return dfd.promise
@@ -24,7 +24,7 @@ restaurants.factory('restaurantFactory',['$http', '$q', 'apiUrl', function (http
 			dfd.resolve(result)
 		})
 		.error(function (data, status, headers, config) {
-			dfd.resolve(data)
+			dfd.reject(data)
 		})
 
 		return dfd.promise
@@ -38,7 +38,7 @@ restaurants.factory('restaurantFactory',['$http', '$q', 'apiUrl', function (http
 			dfd.resolve(result)
 		})
 		.error(function(data, status, headers, config){
-			dfd.resolve(result)
+			dfd.reject(result)
 		})
 
 		return dfd.promise
@@ -52,7 +52,7 @@ restaurants.factory('restaurantFactory',['$http', '$q', 'apiUrl', function (http
 			dfd.resolve(result)
 		})
 		.error(function (data, status, headers, config) {
-			dfd.resolve(data)
+			dfd.reject(data)
 		})
 
 		return dfd.promise	
@@ -66,7 +66,7 @@ restaurants.factory('restaurantFactory',['$http', '$q', 'apiUrl', function (http
 			dfd.resolve(result)
 		})
 		.error(function (data, status, headers, config) {
-			dfd.resolve(data)
+			dfd.reject(data)
 		})
 
 		return dfd.promise
