@@ -7,8 +7,8 @@ restaurants.controller('RestaurantCreateCtrl', ['$scope', '$location', 'restaura
 			},
 			function(){
 				//  Failure block
-			}).then(function(err){
-				//  Like Finally or Default or Always
+			}).then(function(){
+				//  Like Finally or Default or Always				
 			})
 		}else{
 			scope.errorStatus = true
